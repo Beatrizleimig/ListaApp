@@ -9,14 +9,14 @@ class ListaModel {
     this.isCompleted = false,
   });
 
-  // Converte para JSON para salvar em cache
+
   Map<String, dynamic> toJson() => {
     'id': id,
     'title': title,
     'isCompleted': isCompleted,
   };
 
-  // Converte de JSON para o modelo
+
   factory ListaModel.fromJson(Map<String, dynamic> json) {
     return ListaModel(
       id: json['id'],

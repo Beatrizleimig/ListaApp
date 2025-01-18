@@ -9,12 +9,13 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   final ListaController _controller = ListaController();
+  Map<String, bool> _isIconRed = {};
 
-  // Função assíncrona para atualizar a lista após salvar uma tarefa
+
   Future<void> _updateList() async {
-    await _controller.loadListas();  // Chama o método público para carregar as listas
+    await _controller.loadListas();
     setState(() {
-      // Chama setState após a lista ser recarregada
+
     });
   }
 
@@ -22,24 +23,24 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('App Lista', style: TextStyle(fontWeight: FontWeight.bold)),
+        title: Text('Lista de Tarefas', style: TextStyle(fontWeight: FontWeight.bold)),
         centerTitle: true,
         backgroundColor: Colors.blueAccent,
       ),
       body: FutureBuilder(
-        future: _controller.loadListas(),  // Aguarda o carregamento das listas
+        future: _controller.loadListas(), // Aguarda o carregamento das listas
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator()); // Exibe um carregando enquanto não carrega as listas
+            return Center(child: CircularProgressIndicator()); // Exibe um carregando
           }
 
           if (snapshot.hasError) {
             return Center(child: Text('Erro ao carregar as tarefas.'));
           }
 
-          // Ordena a lista para que as tarefas incompletas apareçam primeiro
+
           final sortedListas = _controller.listas
-            ..sort((a, b) => a.isCompleted ? 1 : -1); // Movendo as completadas para baixo
+            ..sort((a, b) => a.isCompleted ? 1 : -1);
 
           return ListView.builder(
             itemCount: sortedListas.length,
@@ -68,17 +69,24 @@ class _HomeViewState extends State<HomeView> {
                       value: lista.isCompleted,
                       onChanged: (value) {
                         setState(() {
-                          // Atualiza a tarefa e recarrega a lista
                           _controller.toggleListaCompletion(lista.id);
                         });
                       },
                     ),
                   ),
                   trailing: IconButton(
-                    icon: Icon(Icons.delete),
+                    icon: Icon(
+                      Icons.delete,
+                      color: _isIconRed[lista.id] == true ? Colors.red : Colors.black, // Vermelho se clicado
+                    ),
                     onPressed: () {
                       setState(() {
-                        _controller.removeLista(lista.id);
+                        _isIconRed[lista.id] = true; // Altera a cor para vermelho
+                        Future.delayed(Duration(milliseconds: 500), () {
+                          setState(() {
+                            _controller.removeLista(lista.id);
+                          });
+                        });
                       });
                     },
                   ),
@@ -88,7 +96,7 @@ class _HomeViewState extends State<HomeView> {
                       MaterialPageRoute(
                         builder: (context) => ListaFormView(
                           lista: lista,
-                          onSave: _updateList,  // Passa o callback para atualizar a lista
+                          onSave: _updateList,
                         ),
                       ),
                     );
@@ -104,12 +112,12 @@ class _HomeViewState extends State<HomeView> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => ListaFormView(onSave: _updateList),  // Passa o callback para atualizar a lista
+              builder: (context) => ListaFormView(onSave: _updateList),
             ),
           );
         },
         backgroundColor: Colors.blueAccent,
-        child: Icon(Icons.add, size: 30),
+        child: Icon(Icons.add, size: 30, color: Colors.white),
       ),
     );
   }

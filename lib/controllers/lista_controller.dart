@@ -34,24 +34,24 @@ class ListaController {
     final index = listas.indexWhere((lista) => lista.id == updatedLista.id);
     if (index != -1) {
       listas[index] = updatedLista;
-      await _saveListas(); // Salva as listas
+      await _saveListas();
     }
   }
 
   // Remove uma tarefa
   Future<void> removeLista(String id) async {
     listas.removeWhere((lista) => lista.id == id);
-    await _saveListas(); // Salva as listas
+    await _saveListas();
   }
 
   // Marca a tarefa como completada ou não
   Future<void> toggleListaCompletion(String id) async {
     final lista = listas.firstWhere((lista) => lista.id == id);
 
-    // Atualiza o status de 'completado' ou 'incompleto'
+    // Atualiza
     lista.isCompleted = !lista.isCompleted;
 
-    await _saveListas(); // Salva as listas sem alterar a ordem
+    await _saveListas();
   }
 
 

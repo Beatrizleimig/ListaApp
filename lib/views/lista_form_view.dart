@@ -20,7 +20,7 @@ class ListaFormView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(lista == null ? 'Nova Tarefa' : 'Editar Tarefa'),
-        backgroundColor: Colors.teal,
+        backgroundColor: Colors.blueAccent,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -32,7 +32,7 @@ class ListaFormView extends StatelessWidget {
                 controller: _titleController,
                 decoration: InputDecoration(
                   labelText: 'Título da Tarefa',
-                  labelStyle: TextStyle(color: Colors.teal),
+                  labelStyle: TextStyle(color: Colors.grey),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
                     borderSide: BorderSide(color: Colors.teal),
@@ -76,13 +76,14 @@ class ListaFormView extends StatelessWidget {
                   }
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.teal,
+                  backgroundColor: Colors.blueAccent,
                   minimumSize: Size(double.infinity, 50),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
                 ),
-                child: Text('Salvar', style: TextStyle(fontSize: 18)),
+                child: Text('Salvar', style: TextStyle(fontSize: 18 , color: Colors.white),
+                ),
               ),
             ],
           ),
