@@ -1,16 +1,20 @@
-# lista_app
+# 📋 AppLista - Lista de Tarefas
 
-A new Flutter project.
+O **AppLista** é um aplicativo simples e intuitivo desenvolvido em Flutter para gerenciar tarefas do dia a dia. Ele permite que você organize suas atividades, marque tarefas como concluídas e remova aquelas que não são mais necessárias.
 
-## Getting Started
+##  Funcionalidades
 
-This project is a starting point for a Flutter application.
+- **Adicionar Tarefas**: Insira novas atividades na lista.
+- **Marcar como Concluída**: Indique quais tarefas foram finalizadas.
+- **Organização Inteligente**: Tarefas concluídas são movidas para o final da lista.
+- **Persistência de Dados**: Todas as tarefas são salvas localmente, garantindo que nenhuma informação seja perdida ao fechar o app.
 
-A few resources to get you started if this is your first Flutter project:
+##  Tecnologias Utilizadas
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- **Flutter**: Framework para desenvolvimento multiplataforma.
+- **Dart**: Linguagem de programação utilizada com Flutter.
+- **SharedPreferences**: Biblioteca para persistência de dados local.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+ ## Autor:
+-Desenvolvido por Ana Beatriz Leimig
+  
