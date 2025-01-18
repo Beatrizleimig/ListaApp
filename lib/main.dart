@@ -14,17 +14,17 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
         appBarTheme: AppBarTheme(
-          backgroundColor: Colors.blueAccent, // Cor de fundo do AppBar
-          titleTextStyle: TextStyle(color: Colors.white, fontSize: 20), // Cor do título
+          backgroundColor: Colors.blueAccent,
+          titleTextStyle: TextStyle(color: Colors.white, fontSize: 20),
         ),
       ),
       initialRoute: '/',
       routes: {
-        '/': (context) => HomeView(), // Tela inicial
+        '/': (context) => HomeView(),
         '/lista_form': (context) => ListaFormView(onSave: () {
-          // Passando a função 'onSave' como callback
+
           print('Tarefa salva!');
-          // Aqui você pode definir a lógica para atualizar a lista de tarefas
+
         }),
       },
     );
